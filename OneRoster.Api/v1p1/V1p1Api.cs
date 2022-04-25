@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace OneRoster.Api.v1p1
@@ -11,6 +12,7 @@ namespace OneRoster.Api.v1p1
         private string _baseOneRosterV1Url;
         private Token _token;
         private HttpClient _httpClient;
+        private Dictionary<string, string> _filterRequestParameters;
 
         public V1p1Api(string baseUrl, string clientId, string clientSecret)
         {
@@ -18,6 +20,7 @@ namespace OneRoster.Api.v1p1
             _baseOneRosterV1Url = baseUrl + "/ims/oneroster/v1p1";
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _token.access_token);
+            _filterRequestParameters = new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -80,10 +83,10 @@ namespace OneRoster.Api.v1p1
         /// </summary>
         public UsersManagement UsersManagement => new(this);
 
-        internal async Task<T?> ExecuteAsync<T>(string endpoint, ApiParameters? p) where T : new()
+        internal async Task<T?> ExecuteAsync<T>(string endpoint) where T : new()
         {
-            var finalEndpoint = _baseOneRosterV1Url + endpoint;
-            var response = await GetResponse(endpoint, p);
+            var finalEndpoint = _baseOneRosterV1Url + endpoint + GenerateQueryString();
+            var response = await GetResponse(endpoint);
             if (response != null)
             {
                 if (response.StatusCode == HttpStatusCode.NoContent)
@@ -101,46 +104,65 @@ namespace OneRoster.Api.v1p1
             throw exception;
         }
 
-        internal async Task<HttpResponseMessage> GetResponse(string endpoint, ApiParameters? p)
+        internal async Task<HttpResponseMessage> GetResponse(string endpoint)
         {
-            var finalEndpoint = _baseOneRosterV1Url + endpoint;
+            var finalEndpoint = _baseOneRosterV1Url + endpoint + GenerateQueryString();
             return await _httpClient.GetAsync(finalEndpoint);
         }
 
-        internal RestRequest AddRequestParameters(RestRequest r, ApiParameters? p)
+        internal void AddRequestParameters(ApiParameters? p)
         {
-            if (p == null) return r;
+            _filterRequestParameters.Clear();
+
+            if (p == null) return;
 
             if (p.Filter != null)
             {
-                r.AddParameter("filter", p.Filter);
+                _filterRequestParameters.Add("filter", p.Filter);
             }
             if (p.Sort != null)
             {
-                r.AddParameter("sort", p.Sort);
+                _filterRequestParameters.Add("sort", p.Sort);
             }
             if (p.OrderBy != null)
             {
-                r.AddParameter("orderBy", p.OrderBy);
+                _filterRequestParameters.Add("orderBy", p.OrderBy);
             }
             if (p.Limit.HasValue)
             {
-                r.AddParameter("limit", p.Limit.Value);
+                _filterRequestParameters.Add("limit", p.Limit.Value.ToString());
             }
             if (p.Offset.HasValue)
             {
-                r.AddParameter("offset", p.Offset.Value);
+                _filterRequestParameters.Add("offset", p.Offset.Value.ToString());
             }
             if (p.Fields != null)
             {
-                r.AddParameter("fields", p.Fields);
+                _filterRequestParameters.Add("fields", p.Fields);
             }
             if (p.ExtBasic.HasValue)
             {
-                r.AddParameter("ext_basic", p.ExtBasic.Value);
+                _filterRequestParameters.Add("ext_basic", p.ExtBasic.Value.ToString());
+            }
+        }
+
+        internal string GenerateQueryString() 
+        {
+            var isStartQuestionMark = false;
+            var sb = new StringBuilder();
+            foreach(var paramter in _filterRequestParameters)
+            {
+                if (paramter.Value == null) continue;
+
+                sb.Append(isStartQuestionMark ? "&" : "?");
+                sb.Append(paramter.Key);
+                sb.Append("=");
+                sb.Append(paramter.Value);
+
+                isStartQuestionMark = true;
             }
 
-            return r;
-        }
+            return sb.ToString();
+		}
     }
 }

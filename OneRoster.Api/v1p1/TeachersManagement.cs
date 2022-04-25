@@ -14,41 +14,41 @@ namespace OneRoster.Api.v1p1
 
         public async Task<Users?> GetAllTeachersAsync(ApiParameters? p = null)
         {
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.ExecuteAsync<Users>(_baseEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.ExecuteAsync<Users>(_baseEndpoint);
         }
 
         public async Task<HttpResponseMessage> GetAllTeachersRaw(ApiParameters? p = null)
         {
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.GetResponse(_baseEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.GetResponse(_baseEndpoint);
         }
 
         public async Task<User?> GetTeacherAsync(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.ExecuteAsync<User>(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.ExecuteAsync<User>(finalEndpoint);
         }
         public async Task<HttpResponseMessage> GetTeacherRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.GetResponse(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.GetResponse(finalEndpoint);
         }
 
         public async Task<Classes?> GetClassesForTeacherAsync(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/classes";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.ExecuteAsync<Classes>(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.ExecuteAsync<Classes>(finalEndpoint);
         }
 
         public async Task<HttpResponseMessage> GetClassesForTeacherRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/classes";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.GetResponse(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.GetResponse(finalEndpoint);
         }
     }
 }

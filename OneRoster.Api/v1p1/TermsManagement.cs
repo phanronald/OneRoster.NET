@@ -14,54 +14,54 @@ namespace OneRoster.Api.v1p1
 
         public async Task<AcademicSessions?> GetAllTermsAsync(ApiParameters? p = null)
         {
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.ExecuteAsync<AcademicSessions>(_baseEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.ExecuteAsync<AcademicSessions>(_baseEndpoint);
         }
         public async Task<HttpResponseMessage> GetAllTermsRaw(ApiParameters? p = null)
         {
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.GetResponse(_baseEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.GetResponse(_baseEndpoint);
         }
 
         public async Task<AcademicSession?> GetTermAsync(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.ExecuteAsync<AcademicSession>(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.ExecuteAsync<AcademicSession>(finalEndpoint);
         }
 
         public async Task<HttpResponseMessage> GetTermRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.GetResponse(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.GetResponse(finalEndpoint);
         }
 
         public async Task<Classes?> GetClassesForTermAsync(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/classes";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.ExecuteAsync<Classes>(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.ExecuteAsync<Classes>(finalEndpoint);
         }
 
         public async Task<HttpResponseMessage> GetClassesForRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/classes";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.GetResponse(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.GetResponse(finalEndpoint);
         }
         
         public async Task<AcademicSessions?> GetGradingPeriodsForTermAsync(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/gradingPeriods";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.ExecuteAsync<AcademicSessions>(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.ExecuteAsync<AcademicSessions>(finalEndpoint);
         }
         public async Task<HttpResponseMessage> GetGradingPeriodsForTermRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/gradingPeriods";
-            //_oneRosterApi.AddRequestParameters(_request, p);
-            return await _oneRosterApi.GetResponse(finalEndpoint, p);
+            _oneRosterApi.AddRequestParameters(p);
+            return await _oneRosterApi.GetResponse(finalEndpoint);
         }
 
     }
