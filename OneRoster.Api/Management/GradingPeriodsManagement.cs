@@ -19,10 +19,10 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<AcademicSessions>(_baseEndpoint);
         }
-        public async Task<HttpResponseMessage> GetAllGradingPeriodsRaw(ApiParameters? p = null)
+        public async Task<string> GetAllGradingPeriodsRaw(ApiParameters? p = null)
         {
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(_baseEndpoint);
+            return await _oneRosterApi.GetRawResponse(_baseEndpoint);
         }
 
         public async Task<AcademicSession?> GetGradingPeriodAsync(string sourcedId, ApiParameters? p = null)
@@ -31,11 +31,11 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<AcademicSession>(finalEndpoint);
         }
-        public async Task<HttpResponseMessage> GetGradingPeriodRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetGradingPeriodRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
     }
 }

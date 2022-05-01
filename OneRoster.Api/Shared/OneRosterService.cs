@@ -117,7 +117,28 @@ namespace OneRoster.Api.Shared
             throw exception;
         }
 
-        public async Task<HttpResponseMessage> GetResponse(string endpoint)
+        public async Task<string> GetRawResponse(string endpoint)
+        {
+            var finalEndpoint = _baseOneRosterUrl + endpoint + GenerateQueryString();
+            var response = await GetResponse(endpoint);
+            if (response != null)
+            {
+                if (response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    return string.Empty;
+                }
+                else if (response.IsSuccessStatusCode)
+                {
+                    return await _httpClient.GetStringAsync(finalEndpoint);
+                }
+            }
+
+            const string message = "Error retrieving response.  Check inner details for more info.";
+            var exception = new Exception(message);
+            throw exception;
+        }
+
+        private async Task<HttpResponseMessage> GetResponse(string endpoint)
         {
             var finalEndpoint = _baseOneRosterUrl + endpoint + GenerateQueryString();
             return await _httpClient.GetAsync(finalEndpoint);

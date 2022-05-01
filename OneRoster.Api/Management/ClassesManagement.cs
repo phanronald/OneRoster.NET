@@ -20,10 +20,10 @@ namespace OneRoster.Api.Management
             return await _oneRosterApi.ExecuteAsync<Classes>(_baseEndpoint);
         }
 
-        public async Task<HttpResponseMessage> GetAllClassesRaw(ApiParameters? p = null)
+        public async Task<string> GetAllClassesRaw(ApiParameters? p = null)
         {
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(_baseEndpoint);
+            return await _oneRosterApi.GetRawResponse(_baseEndpoint);
         }
 
         public async Task<Class?> GetClassAsync(string sourcedId, ApiParameters? p = null)
@@ -33,11 +33,11 @@ namespace OneRoster.Api.Management
             return await _oneRosterApi.ExecuteAsync<Class>(finalEndpoint);
         }
 
-        public async Task<HttpResponseMessage> GetClassRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetClassRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
 
         public async Task<Users?> GetStudentsForClassAsync(string sourcedId, ApiParameters? p = null)
@@ -46,11 +46,11 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<Users>(finalEndpoint);
         }
-        public async Task<HttpResponseMessage> GetStudentsForClassRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetStudentsForClassRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/students";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
 
         public async Task<Users?> GetTeachersForClassAsync(string sourcedId, ApiParameters? p = null)
@@ -59,11 +59,11 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<Users>(finalEndpoint);
         }
-        public async Task<HttpResponseMessage> GetTeachersForClassRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetTeachersForClassRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/teachers";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
     }
 }

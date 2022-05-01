@@ -19,10 +19,10 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<Users>(_baseEndpoint);
         }
-        public async Task<HttpResponseMessage> GetAllUsersRaw(ApiParameters? p = null)
+        public async Task<string> GetAllUsersRaw(ApiParameters? p = null)
         {
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(_baseEndpoint);
+            return await _oneRosterApi.GetRawResponse(_baseEndpoint);
         }
 
         public async Task<User?> GetUserAsync(string sourcedId, ApiParameters? p = null)
@@ -31,11 +31,11 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<User>(finalEndpoint);
         }
-        public async Task<HttpResponseMessage> GetUserRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetUserRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
 
         public async Task<Classes?> GetClassesForUserAsync(string sourcedId, ApiParameters? p = null)
@@ -44,11 +44,11 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<Classes>(finalEndpoint);
         }
-        public async Task<HttpResponseMessage> GetClassesForUserRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetClassesForUserRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/classes";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
     }
 }

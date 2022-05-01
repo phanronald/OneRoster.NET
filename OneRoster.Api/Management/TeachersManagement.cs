@@ -20,10 +20,10 @@ namespace OneRoster.Api.Management
             return await _oneRosterApi.ExecuteAsync<Users>(_baseEndpoint);
         }
 
-        public async Task<HttpResponseMessage> GetAllTeachersRaw(ApiParameters? p = null)
+        public async Task<string> GetAllTeachersRaw(ApiParameters? p = null)
         {
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(_baseEndpoint);
+            return await _oneRosterApi.GetRawResponse(_baseEndpoint);
         }
 
         public async Task<User?> GetTeacherAsync(string sourcedId, ApiParameters? p = null)
@@ -32,11 +32,11 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<User>(finalEndpoint);
         }
-        public async Task<HttpResponseMessage> GetTeacherRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetTeacherRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
 
         public async Task<Classes?> GetClassesForTeacherAsync(string sourcedId, ApiParameters? p = null)
@@ -46,11 +46,11 @@ namespace OneRoster.Api.Management
             return await _oneRosterApi.ExecuteAsync<Classes>(finalEndpoint);
         }
 
-        public async Task<HttpResponseMessage> GetClassesForTeacherRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetClassesForTeacherRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}/classes";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
     }
 }

@@ -20,10 +20,10 @@ namespace OneRoster.Api.Management
             return await _oneRosterApi.ExecuteAsync<Orgs>(_baseEndpoint);
         }
 
-        public async Task<HttpResponseMessage> GetAllOrgsRaw(ApiParameters? p = null)
+        public async Task<string> GetAllOrgsRaw(ApiParameters? p = null)
         {
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(_baseEndpoint);
+            return await _oneRosterApi.GetRawResponse(_baseEndpoint);
         }
 
         public async Task<Org?> GetOrgAsync(string sourcedId, ApiParameters? p = null)
@@ -33,11 +33,11 @@ namespace OneRoster.Api.Management
             return await _oneRosterApi.ExecuteAsync<Org>(finalEndpoint);
         }
 
-        public async Task<HttpResponseMessage> GetOrgRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetOrgRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
     }
 }

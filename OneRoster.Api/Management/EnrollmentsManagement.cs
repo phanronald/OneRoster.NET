@@ -19,10 +19,10 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<Enrollments>(_baseEndpoint);
         }
-        public async Task<HttpResponseMessage> GetAllEnrollmentsRaw(ApiParameters? p = null)
+        public async Task<string> GetAllEnrollmentsRaw(ApiParameters? p = null)
         {
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(_baseEndpoint);
+            return await _oneRosterApi.GetRawResponse(_baseEndpoint);
         }
 
         public async Task<Enrollment?> GetEnrollmentAsync(string sourcedId, ApiParameters? p = null)
@@ -31,11 +31,11 @@ namespace OneRoster.Api.Management
             _oneRosterApi.AddRequestParameters(p);
             return await _oneRosterApi.ExecuteAsync<Enrollment>(finalEndpoint);
         }
-        public async Task<HttpResponseMessage> GetEnrollmentRaw(string sourcedId, ApiParameters? p = null)
+        public async Task<string> GetEnrollmentRaw(string sourcedId, ApiParameters? p = null)
         {
             var finalEndpoint = $"{_baseEndpoint}/{sourcedId}";
             _oneRosterApi.AddRequestParameters(p);
-            return await _oneRosterApi.GetResponse(finalEndpoint);
+            return await _oneRosterApi.GetRawResponse(finalEndpoint);
         }
     }
 }
