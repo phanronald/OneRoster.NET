@@ -138,12 +138,6 @@ namespace OneRoster.Api.Shared
             throw exception;
         }
 
-        private async Task<HttpResponseMessage> GetResponse(string endpoint)
-        {
-            var finalEndpoint = _baseOneRosterUrl + endpoint + GenerateQueryString();
-            return await _httpClient.GetAsync(finalEndpoint);
-        }
-
         public void AddRequestParameters(ApiParameters? p)
         {
             _filterRequestParameters.Clear();
@@ -180,7 +174,13 @@ namespace OneRoster.Api.Shared
             }
         }
 
-        internal string GenerateQueryString()
+        private async Task<HttpResponseMessage> GetResponse(string endpoint)
+        {
+            var finalEndpoint = _baseOneRosterUrl + endpoint + GenerateQueryString();
+            return await _httpClient.GetAsync(finalEndpoint);
+        }
+
+        private string GenerateQueryString()
         {
             var isStartQuestionMark = false;
             var sb = new StringBuilder();
