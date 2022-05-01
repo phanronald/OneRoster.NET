@@ -33,7 +33,7 @@ namespace OneRoster.Api.SharedDtos
         public GuidRef? Parent { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public OrgType Type { get; set; }
+        public OrgType? Type { get; set; }
 
 
     }

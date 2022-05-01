@@ -1,14 +1,16 @@
 ﻿
+using OneRoster.Api.Model;
+using OneRoster.Api.Shared;
 using OneRoster.Api.SharedDtos;
 
-namespace OneRoster.Api.v1p1
+namespace OneRoster.Api.Management
 {
 	public class AcademicSessionsManagement
     {
-        private readonly V1p1Api _oneRosterApi;
+        private readonly IOneRosterService _oneRosterApi;
         private readonly string _baseEndpoint = "/academicSessions";
 
-        public AcademicSessionsManagement(V1p1Api oneRosterApi)
+        public AcademicSessionsManagement(IOneRosterService oneRosterApi)
         {
             _oneRosterApi = oneRosterApi;
         }

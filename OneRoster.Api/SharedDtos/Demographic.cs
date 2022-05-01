@@ -1,4 +1,7 @@
-﻿namespace OneRoster.Api.SharedDtos
+﻿using OneRoster.Api.Shared;
+using System.Text.Json.Serialization;
+
+namespace OneRoster.Api.SharedDtos
 {
     /// <summary>
     /// Demographics information is taken from the Common Educational Data Standards from the US government. (http://ceds.ed.gov). Demographics 
@@ -19,7 +22,8 @@
 
         public DateTimeOffset? BirthDate { get; set; }
 
-        public string? Sex { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public GenderType? Sex { get; set; }
 
         public string? CountryOfBirthCode { get; set; }
 

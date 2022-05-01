@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OneRoster.Api.Model;
-using OneRoster.Api.v1p1;
+using OneRoster.Api.Shared;
 
 namespace OneRoster.Api.Controllers
 {
@@ -16,8 +16,9 @@ namespace OneRoster.Api.Controllers
 		[Route("get-classes")]
 		public async Task<IActionResult> GetV1p1Classes([FromQuery] vmOneRosterInput input)
 		{
-			var oneRosterApiData = new V1p1Api(input.BaseUrl, input.ClientId, input.ClientSecret);
-			//var model = await oneRosterApiData.ClassesManagement.GetAllClassesAsync();
+			var oneRosterApiData = new OneRosterService(OneRosterVersionType.V1P1,
+				input.BaseUrl, input.ClientId, input.ClientSecret);
+
 			var model = await oneRosterApiData.ClassesManagement.GetAllClassesAsync(
 				new ApiParameters() { Limit = 2 }
 			);

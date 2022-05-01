@@ -16,13 +16,34 @@ namespace OneRoster.Api.Shared
             _clientSecret = clientSecret;
         }
 
-        internal async Task<Token> GetToken()
+        internal async Task<Token> GenerateToken(OneRosterVersionType oneRosterVersionType)
+        {
+            var scopeUrl = string.Empty;
+            switch(oneRosterVersionType)
+            {
+                case OneRosterVersionType.V1P2:
+                {
+                        scopeUrl = "http://purl.imsglobal.org/spec/or/v1p2/scope/roster.readonly http://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly http://purl.imsglobal.org/spec/or/v1p2/scope/roster-demographics.readonly";
+                        break;
+				}
+                case OneRosterVersionType.V1P1:
+                default:
+                {
+                        scopeUrl = "https://purl.imsglobal.org/spec/or/v1p1/scope/roster-core.readonly";
+                        break;
+				}
+			}
+
+            return await GetToken(scopeUrl);
+		}
+
+        private async Task<Token> GetToken(string scopeUrl)
         {
             var parameters = new[] {
                 new KeyValuePair<string, string>("grant_type", "client_credentials"),
                 new KeyValuePair<string, string>("client_id", _clientId),
                 new KeyValuePair<string, string>("client_secret", _clientSecret),
-                new KeyValuePair<string, string>("scope", "https://purl.imsglobal.org/spec/or/v1p1/scope/roster-core.readonly"),
+                new KeyValuePair<string, string>("scope", scopeUrl),
             };
 
             using var httpClient = new HttpClient();

@@ -1,13 +1,15 @@
-﻿using OneRoster.Api.SharedDtos;
+﻿using OneRoster.Api.Model;
+using OneRoster.Api.Shared;
+using OneRoster.Api.SharedDtos;
 
-namespace OneRoster.Api.v1p1
+namespace OneRoster.Api.Management
 {
 	public class GradingPeriodsManagement
     {
-        private readonly V1p1Api _oneRosterApi;
+        private readonly IOneRosterService _oneRosterApi;
         private readonly string _baseEndpoint = "/gradingPeriods";
 
-        public GradingPeriodsManagement(V1p1Api oneRosterApi)
+        public GradingPeriodsManagement(IOneRosterService oneRosterApi)
         {
             _oneRosterApi = oneRosterApi;
         }

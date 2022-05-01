@@ -1,26 +1,39 @@
-﻿using OneRoster.Api.Shared;
-using RestSharp;
-using System;
+﻿using OneRoster.Api.Management;
+using OneRoster.Api.Model;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace OneRoster.Api.v1p1
+namespace OneRoster.Api.Shared
 {
-    public class V1p1Api
+	public class OneRosterService : IOneRosterService
     {
-        private string _baseOneRosterV1Url;
+        private string _baseOneRosterUrl;
         private Token _token;
         private HttpClient _httpClient;
         private Dictionary<string, string> _filterRequestParameters;
 
-        public V1p1Api(string baseUrl, string clientId, string clientSecret)
+        public OneRosterService(OneRosterVersionType versionType,
+            string baseUrl, string clientId, string clientSecret)
         {
-            _token = new Oauth2(baseUrl, clientId, clientSecret).GetToken().Result;
-            _baseOneRosterV1Url = baseUrl + "/ims/oneroster/v1p1";
+            _token = new Oauth2(baseUrl, clientId, clientSecret).GenerateToken(versionType).Result;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _token.access_token);
             _filterRequestParameters = new Dictionary<string, string>();
+
+            switch(versionType) 
+            {
+                case OneRosterVersionType.V1P2: 
+                {
+                        _baseOneRosterUrl = baseUrl + "/ims/oneroster/rostering/v1p2";
+                        break;
+				}
+                case OneRosterVersionType.V1P1:
+                default: 
+                {
+                        _baseOneRosterUrl = baseUrl + "/ims/oneroster/v1p1";
+                        break;
+                }
+			}; 
         }
 
         /// <summary>
@@ -83,9 +96,9 @@ namespace OneRoster.Api.v1p1
         /// </summary>
         public UsersManagement UsersManagement => new(this);
 
-        internal async Task<T?> ExecuteAsync<T>(string endpoint) where T : new()
+        public async Task<T?> ExecuteAsync<T>(string endpoint) where T : new()
         {
-            var finalEndpoint = _baseOneRosterV1Url + endpoint + GenerateQueryString();
+            var finalEndpoint = _baseOneRosterUrl + endpoint + GenerateQueryString();
             var response = await GetResponse(endpoint);
             if (response != null)
             {
@@ -104,13 +117,13 @@ namespace OneRoster.Api.v1p1
             throw exception;
         }
 
-        internal async Task<HttpResponseMessage> GetResponse(string endpoint)
+        public async Task<HttpResponseMessage> GetResponse(string endpoint)
         {
-            var finalEndpoint = _baseOneRosterV1Url + endpoint + GenerateQueryString();
+            var finalEndpoint = _baseOneRosterUrl + endpoint + GenerateQueryString();
             return await _httpClient.GetAsync(finalEndpoint);
         }
 
-        internal void AddRequestParameters(ApiParameters? p)
+        public void AddRequestParameters(ApiParameters? p)
         {
             _filterRequestParameters.Clear();
 
@@ -146,11 +159,11 @@ namespace OneRoster.Api.v1p1
             }
         }
 
-        internal string GenerateQueryString() 
+        internal string GenerateQueryString()
         {
             var isStartQuestionMark = false;
             var sb = new StringBuilder();
-            foreach(var paramter in _filterRequestParameters)
+            foreach (var paramter in _filterRequestParameters)
             {
                 if (paramter.Value == null) continue;
 
@@ -163,6 +176,6 @@ namespace OneRoster.Api.v1p1
             }
 
             return sb.ToString();
-		}
+        }
     }
 }

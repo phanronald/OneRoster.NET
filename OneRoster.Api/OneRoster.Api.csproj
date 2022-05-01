@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="v1p2\**" />
+    <Content Remove="v1p2\**" />
+    <EmbeddedResource Remove="v1p2\**" />
+    <None Remove="v1p2\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Management\V1p1Api.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="107.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />

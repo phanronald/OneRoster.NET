@@ -1,4 +1,7 @@
-﻿namespace OneRoster.Api.SharedDtos
+﻿using OneRoster.Api.Shared;
+using System.Text.Json.Serialization;
+
+namespace OneRoster.Api.SharedDtos
 {
     /// <summary>
     /// A class is an instance of a course, onto which students and teachers are enrolled. A class is typically held within a term.
@@ -15,7 +18,8 @@
 
         public string? Title { get; set; }
 
-        public string? ClassType { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public ClassType? ClassType { get; set; }
 
         public string? ClassCode { get; set; }
 

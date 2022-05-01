@@ -35,7 +35,7 @@ namespace OneRoster.Api.SharedDtos
         public GuidRef? Parent { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public AcademicSessionType Type { get; set; }
+        public AcademicSessionType? Type { get; set; }
 
     }
 

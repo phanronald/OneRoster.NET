@@ -1,13 +1,15 @@
-﻿using OneRoster.Api.SharedDtos;
+﻿using OneRoster.Api.Model;
+using OneRoster.Api.Shared;
+using OneRoster.Api.SharedDtos;
 
-namespace OneRoster.Api.v1p1
+namespace OneRoster.Api.Management
 {
 	public class SchoolsManagement
     {
-        private readonly V1p1Api _oneRosterApi;
+        private readonly IOneRosterService _oneRosterApi;
         private readonly string _baseEndpoint = "/schools";
 
-        public SchoolsManagement(V1p1Api oneRosterApi)
+        public SchoolsManagement(IOneRosterService oneRosterApi)
         {
             _oneRosterApi = oneRosterApi;
         }
