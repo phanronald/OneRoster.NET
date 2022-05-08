@@ -50,6 +50,17 @@ namespace OneRoster.Models
 
         public List<UserId>? UserIds { get; set; }
 
+        public List<GuidRef>? Agents { get; set; }
+
+        public List<string>? Grades { get; set; }
+
+        public string? Password { get; set; }
+
+        /// <summary>
+        /// v1p1 only
+        /// </summary>
+        public List<GuidRef>? Orgs { get; set; }
+
         /// <summary>
         /// v1p1 only
         /// </summary>
@@ -61,19 +72,25 @@ namespace OneRoster.Models
         /// </summary>
         public List<UserRole>? Roles { get; set; }
 
-        public List<GuidRef>? Agents { get; set; }
-
-        public List<string>? Grades { get; set; }
-
         /// <summary>
         /// v1p2 only
         /// </summary>
         public UserRole? RoleTypesForGreatestPrimaryEnrollment { get; set; }
 
         /// <summary>
-        /// v1p1 only
+        /// v1p2 only
         /// </summary>
-        public string? Password { get; set; }
+        public GuidRef? PrimaryOrg { get; set; }
+
+        /// <summary>
+        /// v1p2 only
+        /// </summary>
+        public List<UserProfile>? UserProfiles { get; set; }
+
+        /// <summary>
+        /// v1p2 only
+        /// </summary>
+        public List<GuidRef>? Resources { get; set; }
     }
 
     public class Users

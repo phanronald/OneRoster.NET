@@ -7,7 +7,7 @@ namespace OneRoster.Models.Shared
 
         public string? SourcedId { get; set; }
 
-        public string? Type { get; set; }
+        public GuidRefType? Type { get; set; }
 
 
     }

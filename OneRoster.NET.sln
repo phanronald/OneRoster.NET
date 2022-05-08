@@ -5,9 +5,9 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneRoster.Api", "OneRoster.Api\OneRoster.Api.csproj", "{8D8637B8-3115-4EFF-84FE-C2258CB57FE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneRoster.Services", "OneRoster.Services\OneRoster.Services.csproj", "{4BC9F4B0-9AAC-497D-8E5C-19C1DF4B0155}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneRoster.Services", "OneRoster.Services\OneRoster.Services.csproj", "{4BC9F4B0-9AAC-497D-8E5C-19C1DF4B0155}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneRoster.Models", "OneRoster.Models\OneRoster.Models.csproj", "{9B07694A-25C3-48F3-82F4-4483FA4D5BC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneRoster.Models", "OneRoster.Models\OneRoster.Models.csproj", "{9B07694A-25C3-48F3-82F4-4483FA4D5BC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
