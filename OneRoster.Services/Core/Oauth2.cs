@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
+using OneRoster.Models.Shared;
 using System.Net;
 
-namespace OneRoster.Models.Shared
+namespace OneRoster.Services.Core
 {
 	internal class Oauth2
     {

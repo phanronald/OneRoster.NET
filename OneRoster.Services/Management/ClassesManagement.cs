@@ -1,8 +1,8 @@
-﻿using OneRoster.Api.Model;
-using OneRoster.Models;
+﻿using OneRoster.Models;
 using OneRoster.Models.Shared;
+using OneRoster.Services.Interfaces;
 
-namespace OneRoster.Api.Management
+namespace OneRoster.Services.Management
 {
 	public class ClassesManagement
     {

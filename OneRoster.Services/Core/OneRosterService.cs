@@ -1,10 +1,11 @@
-﻿using OneRoster.Api.Management;
-using OneRoster.Api.Model;
-using OneRoster.Models.Shared;
+﻿using OneRoster.Models.Shared;
+using OneRoster.Services.Interfaces;
+using OneRoster.Services.Management;
 using System.Net;
+using System.Net.Http.Json;
 using System.Text;
 
-namespace OneRoster.Api.Shared
+namespace OneRoster.Services.Core
 {
 	public class OneRosterService : IOneRosterService
     {
