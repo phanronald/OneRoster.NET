@@ -1,4 +1,4 @@
-﻿namespace OneRoster.Api.Shared
+﻿namespace OneRoster.Models.Shared
 {
     public enum RoleType
     {

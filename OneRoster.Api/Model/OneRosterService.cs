@@ -1,5 +1,6 @@
 ﻿using OneRoster.Api.Management;
 using OneRoster.Api.Model;
+using OneRoster.Models.Shared;
 using System.Net;
 using System.Text;
 

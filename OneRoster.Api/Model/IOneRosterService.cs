@@ -1,4 +1,4 @@
-﻿using OneRoster.Api.Shared;
+﻿using OneRoster.Models.Shared;
 
 namespace OneRoster.Api.Model
 {

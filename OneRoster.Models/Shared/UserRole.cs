@@ -1,8 +1,7 @@
 ﻿
-using OneRoster.Api.Shared;
 using System.Text.Json.Serialization;
 
-namespace OneRoster.Api.SharedDtos
+namespace OneRoster.Models.Shared
 {
     public class UserRole
     {

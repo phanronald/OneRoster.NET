@@ -1,12 +1,12 @@
-﻿using OneRoster.Api.Shared;
+﻿using OneRoster.Models.Shared;
 using System.Text.Json.Serialization;
 
-namespace OneRoster.Api.SharedDtos
+namespace OneRoster.Models
 {
-    /// <summary>
-    /// A class is an instance of a course, onto which students and teachers are enrolled. A class is typically held within a term.
-    /// </summary>
-    public class ClassDetail
+	/// <summary>
+	/// A class is an instance of a course, onto which students and teachers are enrolled. A class is typically held within a term.
+	/// </summary>
+	public class ClassDetail
     {
         public string? SourcedId { get; set; }
 

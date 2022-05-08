@@ -1,6 +1,6 @@
 ﻿using OneRoster.Api.Model;
-using OneRoster.Api.Shared;
-using OneRoster.Api.SharedDtos;
+using OneRoster.Models;
+using OneRoster.Models.Shared;
 
 namespace OneRoster.Api.Management
 {

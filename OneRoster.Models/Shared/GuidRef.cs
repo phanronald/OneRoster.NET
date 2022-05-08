@@ -1,5 +1,5 @@
 ﻿
-namespace OneRoster.Api.SharedDtos
+namespace OneRoster.Models.Shared
 {
     public class GuidRef
     {

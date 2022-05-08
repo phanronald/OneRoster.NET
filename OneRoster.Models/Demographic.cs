@@ -1,16 +1,16 @@
-﻿using OneRoster.Api.Shared;
+﻿using OneRoster.Models.Shared;
 using System.Text.Json.Serialization;
 
-namespace OneRoster.Api.SharedDtos
+namespace OneRoster.Models
 {
-    /// <summary>
-    /// Demographics information is taken from the Common Educational Data Standards from the US government. (http://ceds.ed.gov). Demographics 
-    /// are OPTIONAL.  Note that demographics data is held in its own service, and that access to this service is considered privileged. Not all
-    /// consumer keys will be able to request demographics data.  Demographic Data is modeled in LIS, but the sort of demographic data required 
-    /// by K12 is very different to that modeled in LIS.For this reason, new structures have been created.
-    /// The 'sourcedId' of the demographics MUST be the same as the 'sourcedId' of the user to which it refers.
-    /// </summary>
-    public class DemographicDetail
+	/// <summary>
+	/// Demographics information is taken from the Common Educational Data Standards from the US government. (http://ceds.ed.gov). Demographics 
+	/// are OPTIONAL.  Note that demographics data is held in its own service, and that access to this service is considered privileged. Not all
+	/// consumer keys will be able to request demographics data.  Demographic Data is modeled in LIS, but the sort of demographic data required 
+	/// by K12 is very different to that modeled in LIS.For this reason, new structures have been created.
+	/// The 'sourcedId' of the demographics MUST be the same as the 'sourcedId' of the user to which it refers.
+	/// </summary>
+	public class DemographicDetail
     {
         public string? SourcedId { get; set; }
 

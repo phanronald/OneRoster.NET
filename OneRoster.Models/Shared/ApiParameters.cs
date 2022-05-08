@@ -1,5 +1,5 @@
 ﻿
-namespace OneRoster.Api.Shared
+namespace OneRoster.Models.Shared
 {
     public class ApiParameters
     {

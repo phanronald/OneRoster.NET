@@ -1,4 +1,6 @@
-﻿namespace OneRoster.Api.SharedDtos
+﻿using OneRoster.Models.Shared;
+
+namespace OneRoster.Models
 {
     /// <summary>
     /// A Course is a course of study that, typically, has a shared curriculum although it may be taught to different students by different 

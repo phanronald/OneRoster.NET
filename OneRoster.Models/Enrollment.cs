@@ -1,4 +1,6 @@
-﻿namespace OneRoster.Api.SharedDtos
+﻿using OneRoster.Models.Shared;
+
+namespace OneRoster.Models
 {
     /// <summary>
     /// An enrollment is the name given to an individual taking part in a course or class. In the vast majority of cases, 
