@@ -1,4 +1,5 @@
-﻿using OneRoster.Models.Shared;
+﻿using OneRoster.Models.Enum;
+using OneRoster.Models.Shared;
 using System.Text.Json.Serialization;
 
 namespace OneRoster.Models
@@ -10,20 +11,26 @@ namespace OneRoster.Models
 	/// by K12 is very different to that modeled in LIS.For this reason, new structures have been created.
 	/// The 'sourcedId' of the demographics MUST be the same as the 'sourcedId' of the user to which it refers.
 	/// </summary>
-	public class DemographicDetail
+	public class DemographicDetail : BaseOneRoster
     {
-        public string? SourcedId { get; set; }
-
-        public string? Status { get; set; }
-
-        public DateTimeOffset? DateLastModified { get; set; }
-
-        public Dictionary<string, string>? Metadata { get; set; }
-
         public DateTimeOffset? BirthDate { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public GenderType? Sex { get; set; }
+
+        public bool AmericanIndianOrAlaskaNative { get; set; }
+
+        public bool Asian { get; set; }
+
+        public bool BlackOrAfricanAmerican { get; set; }
+
+        public bool NativeHawaiianOrOtherPacificIslander { get; set; }
+
+        public bool HispanicOrLatinoEthnicity { get; set; }
+
+        public bool White { get; set; }
+
+        public bool DemographicRaceTwoOrMoreRaces { get; set; }
 
         public string? CountryOfBirthCode { get; set; }
 
@@ -32,20 +39,6 @@ namespace OneRoster.Models
         public string? CityOfBirth { get; set; }
 
         public string? PublicSchoolResidenceStatus { get; set; }
-
-        public bool AmericanIndianOrAlaskaNative { get; set; }
-
-        public bool Asian { get; set; }
-
-        public bool BlackOrAfricanAmerican { get; set; }
-
-        public bool DemographicRaceTwoOrMoreRaces { get; set; }
-
-        public bool HispanicOrLatinoEthnicity { get; set; }
-
-        public bool NativeHawaiianOrOtherPacificIslander { get; set; }
-
-        public bool White { get; set; }
     }
 
     public class Demographics

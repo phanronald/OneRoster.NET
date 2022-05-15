@@ -1,4 +1,5 @@
-﻿using OneRoster.Models.Shared;
+﻿using OneRoster.Models.Enum;
+using OneRoster.Models.Shared;
 using OneRoster.Services.Interfaces;
 using OneRoster.Services.Management;
 using System.Net;

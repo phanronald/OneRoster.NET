@@ -8,31 +8,22 @@ namespace OneRoster.Models
     /// in the spring term. There are four classes, each with a different 30 students, taught by 4 different teachers. However the curriculum 
     /// for each of those four classes is the same - the course curriculum.
     /// </summary>
-    public class CourseDetail
+    public class CourseDetail : BaseOneRoster
     {
-        public string? SourcedId { get; set; }
-
-        public string? Status { get; set; }
-
-        public DateTimeOffset? DateLastModified { get; set; }
-
-        public Dictionary<string, string>? Metadata { get; set; }
-
         public string? Title { get; set; }
+        public string? SchoolYear { get; set; }
 
         public string? CourseCode { get; set; }
 
-        /// <summary>
-        /// v1p1 only
-        /// </summary>
         public List<string>? Grades { get; set; }
 
         public List<string>? Subjects { get; set; }
 
-        public List<string>? SubjectCodes { get; set; }
-
         public GuidRef? Org { get; set; }
 
+        public List<string>? SubjectCodes { get; set; }
+
+        public List<GuidRef>? Resources { get; set; }
     }
 
     public class Courses

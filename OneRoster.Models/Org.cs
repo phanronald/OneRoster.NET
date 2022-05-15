@@ -1,4 +1,5 @@
-﻿using OneRoster.Models.Shared;
+﻿using OneRoster.Models.Enum;
+using OneRoster.Models.Shared;
 using System.Text.Json.Serialization;
 
 namespace OneRoster.Models
@@ -13,28 +14,18 @@ namespace OneRoster.Models
 	/// default entry point for requests in most places will be a school. The API provides many school based entry points, whilst still 
 	/// allowing for more generic reading of ORGs, for those applications that need to.
 	/// </summary>
-	public class OrgDetail
+	public class OrgDetail : BaseOneRoster
     {
-        public string? SourcedId { get; set; }
-
-        public string? Status { get; set; }
-
-        public DateTimeOffset? DateLastModified { get; set; }
-
-        public Dictionary<string, string>? Metadata { get; set; }
-
         public string? Name { get; set; }
-
-        public string? Identifier { get; set; }
-
-        public List<GuidRef>? Children { get; set; }
-
-        public GuidRef? Parent { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public OrgType? Type { get; set; }
 
+        public string? Identifier { get; set; }
 
+        public GuidRef? Parent { get; set; }
+
+        public List<GuidRef>? Children { get; set; }
     }
 
     public class Orgs

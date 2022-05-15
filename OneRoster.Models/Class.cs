@@ -1,4 +1,5 @@
-﻿using OneRoster.Models.Shared;
+﻿using OneRoster.Models.Enum;
+using OneRoster.Models.Shared;
 using System.Text.Json.Serialization;
 
 namespace OneRoster.Models
@@ -6,28 +7,17 @@ namespace OneRoster.Models
 	/// <summary>
 	/// A class is an instance of a course, onto which students and teachers are enrolled. A class is typically held within a term.
 	/// </summary>
-	public class ClassDetail
+	public class ClassDetail : BaseOneRoster
     {
-        public string? SourcedId { get; set; }
-
-        public string? Status { get; set; }
-
-        public DateTimeOffset? DateLastModified { get; set; }
-
-        public Dictionary<string, string>? Metadata { get; set; }
-
         public string? Title { get; set; }
+
+        public string? ClassCode { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public ClassType? ClassType { get; set; }
 
-        public string? ClassCode { get; set; }
-
         public string? Location { get; set; }
 
-        /// <summary>
-        /// v1p1 only
-        /// </summary>
         public List<string>? Grades { get; set; }
 
         public List<string>? Subjects { get; set; }
@@ -42,6 +32,7 @@ namespace OneRoster.Models
 
         public List<string>? Periods { get; set; }
 
+        public List<GuidRef>? Resources { get; set; }
     }
 
     public class Classes

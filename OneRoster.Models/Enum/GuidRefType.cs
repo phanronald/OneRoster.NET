@@ -1,4 +1,4 @@
-﻿namespace OneRoster.Models.Shared
+﻿namespace OneRoster.Models.Enum
 {
 	public enum GuidRefType
     {

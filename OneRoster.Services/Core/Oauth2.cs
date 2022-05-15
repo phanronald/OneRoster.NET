@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OneRoster.Models.Enum;
 using OneRoster.Models.Shared;
 using System.Net;
 

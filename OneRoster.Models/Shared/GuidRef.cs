@@ -1,4 +1,6 @@
 ﻿
+using OneRoster.Models.Enum;
+
 namespace OneRoster.Models.Shared
 {
     public class GuidRef

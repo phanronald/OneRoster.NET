@@ -1,4 +1,5 @@
-﻿using OneRoster.Models.Shared;
+﻿using OneRoster.Models.Enum;
+using OneRoster.Models.Shared;
 using System.Text.Json.Serialization;
 
 namespace OneRoster.Models
@@ -12,31 +13,22 @@ namespace OneRoster.Models
 	/// item being connected to a grading period). The parent / child attributes of academic sessions allow terms to be connected to their 
 	/// grading periods and vice-versa.
 	/// </summary>
-	public class AcademicSessionDetail
+	public class AcademicSessionDetail : BaseOneRoster
     {
-        public string? SourcedId { get; set; }
-
-        public string? Status { get; set; }
-
-        public DateTimeOffset? DateLastModified { get; set; }
-
-        public Dictionary<string, string>? Metadata { get; set; }
-
         public string? Title { get; set; }
-
-        public string? SchoolYear { get; set; }
 
         public DateTimeOffset? StartDate { get; set; }
 
         public DateTimeOffset? EndDate { get; set; }
 
-        public List<GuidRef>? Children { get; set; }
-
-        public GuidRef? Parent { get; set; }
-
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public AcademicSessionType? Type { get; set; }
 
+        public GuidRef? Parent { get; set; }
+
+        public List<GuidRef>? Children { get; set; }
+
+        public string? SchoolYear { get; set; }
     }
 
     public class AcademicSessions
