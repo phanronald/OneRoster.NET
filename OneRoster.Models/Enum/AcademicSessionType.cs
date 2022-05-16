@@ -2,9 +2,9 @@
 {
     public enum AcademicSessionType
     {
-        GRADINGPERIOD,
-        SEMESTER,
-        SCHOOLYEAR,
-        TERM,
+        gradingperiod,
+        semester,
+        schoolyear,
+        term,
     }
 }

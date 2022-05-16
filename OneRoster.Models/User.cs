@@ -47,6 +47,9 @@ namespace OneRoster.Models
         /// </summary>
         public string? PreferredLastName { get; set; }
 
+        /// <summary>
+        /// v1p1 only
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public RoleType? Role { get; set; }
 

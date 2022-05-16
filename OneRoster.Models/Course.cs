@@ -11,7 +11,7 @@ namespace OneRoster.Models
     public class CourseDetail : BaseOneRoster
     {
         public string? Title { get; set; }
-        public string? SchoolYear { get; set; }
+        public GuidRef? SchoolYear { get; set; }
 
         public string? CourseCode { get; set; }
 
